@@ -140,9 +140,7 @@ extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
         didOutput sampleBuffer: CMSampleBuffer,
         from connection: AVCaptureConnection
     ) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            return
-        }
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         handleDeviceOrientation(connection: connection)
         predictHandPose(pixelBuffer)
         updateFrameImage(pixelBuffer)
