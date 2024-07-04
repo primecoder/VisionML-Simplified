@@ -11,15 +11,13 @@ import Combine
 import Vision
 
 class CameraViewModel: NSObject, ObservableObject {
-    private let session = AVCaptureSession()
-    private let videoOutput = AVCaptureVideoDataOutput()
-
-    @Published var frameImage: HandPoseImage?
-    @Published @MainActor var canPrediect: Bool = false
-
+    @Published @MainActor var frameImage: HandPoseImage?
     @Published @MainActor var recognisedNumber: String = ""
     @Published @MainActor var readingNumber: String = ""
     @Published @MainActor var readingPct: Double = 0.0
+
+    private let session = AVCaptureSession()
+    private let videoOutput = AVCaptureVideoDataOutput()
 
     private var frameCount: Int = 0 {
         didSet {
@@ -30,6 +28,7 @@ class CameraViewModel: NSObject, ObservableObject {
         }
     }
 
+    private var canPrediect: Bool = false
     private var prevMessage: String = ""
 
     /// Max number of frames with same number before registering as output number.
@@ -37,7 +36,7 @@ class CameraViewModel: NSObject, ObservableObject {
 
     private var mlModel: HandPoseMLModel?
 
-    lazy var handPoseRequest: VNDetectHumanHandPoseRequest = {
+    lazy private var handPoseRequest: VNDetectHumanHandPoseRequest = {
         let request = VNDetectHumanHandPoseRequest()
         request.maximumHandCount = 1
         return request
