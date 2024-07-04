@@ -97,16 +97,16 @@ class CameraViewModel: NSObject, ObservableObject {
                     let poseMultiArray = try observation.keypointsMultiArray()
                     let input = HandPoseInput(poses: poseMultiArray)
                     if let prediction = try mlModel.predict(poses: input) {
-                        if prediction.label != readingNumber {
+                        if prediction.label != readingNumber {  // New number
                             frameCount = 0
                             readingNumber = prediction.label
-                        } else {
+                        } else {    // Same number
                             if readingNumber != prevMessage {
-                                if frameCount > Self.frameCountMax {
+                                if frameCount > Self.frameCountMax {    // Got enough.
                                     recognisedNumber = readingNumber
                                     frameCount = Self.frameCountMax
                                     prevMessage = readingNumber
-                                } else {
+                                } else {    // Need more frames with this number.
                                     frameCount += 1
                                 }
                             }
