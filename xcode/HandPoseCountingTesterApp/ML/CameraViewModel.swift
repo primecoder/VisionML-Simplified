@@ -28,13 +28,13 @@ class CameraViewModel: NSObject, ObservableObject {
         }
     }
 
-    private var canPrediect: Bool = false
+    private var canPredict: Bool = false
     private var prevMessage: String = ""
 
     /// Max number of frames with same number before registering as output number.
     private static var frameCountMax: Int = 30
 
-    private var mlModel: HandPoseMLModel?
+    private var mlModel: HandPoseMLModel!
 
     lazy private var handPoseRequest: VNDetectHumanHandPoseRequest = {
         let request = VNDetectHumanHandPoseRequest()
@@ -49,6 +49,7 @@ class CameraViewModel: NSObject, ObservableObject {
         Task {
             do {
                 mlModel = try await HandPoseMLModel.loadMLModel()
+                canPredict = true
             } catch {
                 print("ERROR: Initialising ML classifier: \(error)")
             }
@@ -84,44 +85,36 @@ class CameraViewModel: NSObject, ObservableObject {
     }
     
     private func predictHandPose(_ pixelBuffer: CVImageBuffer) {
+        // Check if ML is not busy.
+        guard canPredict else { return }
+
         let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up)
         Task { @MainActor in
             do {
                 try imageRequestHandler.perform([handPoseRequest])
                 if let observation = handPoseRequest.results?.first {
-                    canPrediect = true
+                    canPredict = false  // ML is busy now.
                     let poseMultiArray = try observation.keypointsMultiArray()
                     let input = HandPoseInput(poses: poseMultiArray)
-                    if let ml = self.mlModel {
-                        canPrediect = false
-                        if let prediction = try ml.predict(poses: input) {
-                            if prediction.label != readingNumber {
-                                frameCount = 0
-                                readingNumber = prediction.label
-                            } else {
-                                if readingNumber != prevMessage {
-                                    if frameCount > Self.frameCountMax {
-                                        recognisedNumber = readingNumber
-                                        frameCount = Self.frameCountMax
-                                        prevMessage = readingNumber
-                                    } else {
-                                        frameCount += 1
-                                    }
+                    if let prediction = try mlModel.predict(poses: input) {
+                        if prediction.label != readingNumber {
+                            frameCount = 0
+                            readingNumber = prediction.label
+                        } else {
+                            if readingNumber != prevMessage {
+                                if frameCount > Self.frameCountMax {
+                                    recognisedNumber = readingNumber
+                                    frameCount = Self.frameCountMax
+                                    prevMessage = readingNumber
+                                } else {
+                                    frameCount += 1
                                 }
                             }
-                        } else {
-                            readingNumber = "???"
                         }
-                        canPrediect = true
-                    } else {
-                        print("WARN: ML not initialised!")
                     }
+                    canPredict = true   // ML is now free.
                 } else {
-                    readingNumber = ""
-                    prevMessage = ""
-                    frameCount = 0
-                    recognisedNumber = ""
-                    canPrediect = false
+                    resetPrediction()
                 }
 
             } catch {
@@ -130,7 +123,14 @@ class CameraViewModel: NSObject, ObservableObject {
         }
     }
 
-
+    @MainActor
+    private func resetPrediction() {
+        readingNumber = ""
+        prevMessage = ""
+        frameCount = 0
+        recognisedNumber = ""
+        canPredict = true
+    }
 }
 
 extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
