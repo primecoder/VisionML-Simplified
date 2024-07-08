@@ -7,14 +7,15 @@ Using Apple's Vision, HandPose, and Create/Core ML - simplified!
 ### The Goal
 
 Learning (and any anything else in life) should be easy and fun. 
-The goal for this article is to simplify the building block for using Apple's Machine Learning framework and its Vision 
-framework to the bare minimum. Then, from thereon we can expand our understanding to tackle more complex work.
+The goal in this article is to simplify the building block for using Apple's Machine Learning framework and its Vision 
+framework to the bare minimum - get it to work and easy to understand. Then, from thereon we can expand our 
+understanding to tackle more complex work.
 
 ### The plan
 
-1. Train ML Model to recognise and classify our hand-posture images
+1. Use Xcode Developer Tool to train ML Model to classify hand-posture images
 2. Get images from device's camera
-3. Use our ML model to classify the images
+3. Use our trained ML model to classify the images captured from the camera
 4. Re-train our ML model, i.e. make it more accurate
 5. Bob is your uncle and the world is our oyster. Let's do something cool about this!
 
@@ -452,7 +453,7 @@ only by our imagination!
 
 If you see the demo video at the beginning of this post, you'll notice that the ML model struggles
 to recognise hand-pose for number 3. This is true as the training steps was simplified.
-The objective was to provide a skeletal framework of Xcode project to get
+The objective was to provide a *minimum* skeletal framework of Xcode project to get
 Apple Vision and Hand Pose ML to work at its simplesticity (I made up a new word here).
 
 Now that we have a skeletal working project. Training and retraining can be done simply by
@@ -461,4 +462,11 @@ For example, you might like to give more variety of images for each number. Perh
 different set of images for different background, and etc.
 The new `.mlmodel` file can be dropped into the Xcode (replacing the old one), then rebuild the new 
 version of the app.
+
+## References
+
+1. [Apple Developer - Recognizing Gestures with Machine Learning](https://developer.apple.com/tutorials/sample-apps/getstartedwithmachinelearning-recognizegestures)
+
+2. 
+
 
