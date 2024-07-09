@@ -8,7 +8,7 @@ Using Apple's Vision, HandPose, and Create/Core ML - simplified!
 
 Learning (and any anything else in life) should be easy and fun. 
 The goal in this article is to simplify the building block for using Apple's Machine Learning framework and its Vision 
-framework to the bare minimum - get it to work and easy to understand. Then, from thereon we can expand our 
+framework to a bare minimum - get it to work and easy to understand. Then, from thereon we can expand our 
 understanding to tackle more complex work.
 
 ### The plan
@@ -26,7 +26,7 @@ understanding to tackle more complex work.
 
 ### Source code
 
-A full source code used in this article can be downloaded (cloned) from my public Github here:
+The full source code used in this article can be downloaded (cloned) from my public Github here:
 
 - [Project Source Code - Github](https://github.com/primecoder/VisionML-Simplified)
 
@@ -41,16 +41,16 @@ This was the first time I tried my hand on this UI tool.
 > Some background, I have been using Core/Create ML before,
 > by coding, not by using the UI tool.
 
-_Let's see how hard can it be?_
+_Let's see how hard it can be_
 
-Embarrassing enough, it took me a while to find where to activate this tool.
+Embarrassingly enough, it took me a while to find where to activate this tool.
 
 ![ML Create](docs/res/mlcreate-00.png)
 
 ![ML Create](docs/res/mlcreate-01.png)
 
 I have to say, Apple did well on easy-to-use department. I clicked around and just followed the
-instructions. Everything seemed to work (with only a few trails and errors).
+instructions. Everything seemed to work (with only a few trial and error).
 
 ![ML Create](docs/res/mlcreate-02.png)
 
@@ -73,7 +73,7 @@ $ cd training
 $ mkdir 1 2 3 4 5 6 7 8 9 10
 ```
 
-Repeate the above command for `testing` and `validation` folders.
+Repeat the above command for `testing` and `validation` folders.
 
 Now, I just needed some images to train my Hand Pose classifier. I took several pictures of my hand gestures and put them under each folder. By the way, I used American Sign Language for counting with one hand. For more information, please see References section below.
 
@@ -82,7 +82,7 @@ Now, I just needed some images to train my Hand Pose classifier. I took several 
 ![ML Create](docs/res/training-folders.png)
 
 
-Again, the goal for this post is to demonstrate **simplicity**, so we will keep the training process as simple as possible. We will keep it to minimum, i.e. 2-4 images for each label. I opted to not provide images for testing for now and let the tool auto generate test images by subsetting them from the training images. We can always come back here and retrain our ML model, see Part 4 below.
+Again, the goal of this post is to demonstrate **simplicity**, so we will keep the training process as simple as possible. We will keep it to minimum, i.e. 2-4 images for each label. I opted to not provide images for testing for now and let the tool auto generate test images by subsetting them from the training images. We can always come back here and retrain our ML model, see Part 4 below.
 Once, Create ML tool has enough images, the train button should be enabled. 
 
 Start training ML
@@ -205,7 +205,7 @@ extension CameraViewModel {
 }
 ```
 
-(2) Next, I wanted to process the captured images. _Some how_.
+(2) Next, I wanted to process the captured images. _Somehow_.
 Looking at `videoOutput.setSampleBufferDelegate(self, queue: videoQueue)`, the frameworkd will call delegate's function `captureOutput(_:didOutput:from)` passing `CMSampleBuffer` as an input. This is where we will process this data into the image that we can work with.
 
 Let's conform to this protocol and then figure out what to do with the captured images.
@@ -413,7 +413,7 @@ extension HandPoseMLModel {
 ### Using Hand-Pose ML Model 
 
 We now can use our ML model to predict hand poses from images captured via our camera.
-Let modify our `captureOutput(_:didOutput:from)` function to use this classifier, see (5).
+Let's modify our `captureOutput(_:didOutput:from)` function to use this classifier, see (5).
 
 ```swift
     func captureOutput(
@@ -493,7 +493,7 @@ From here on, the usage is limited only by our imagination!
 ## Part 4 - (Re)Training you ML Model
 
 From the demo video at the beginning of this post, you may notice that the ML model struggles
-to recognise hand-pose for number 3. This is true as the training steps was simplified.
+to recognise hand-pose for number 3. This is true as the training steps were simplified.
 The objective was to provide a *minimum* skeletal framework of Xcode project to get
 Apple Vision and Hand Pose ML to work at its simplesticity (I made up a new word here).
 
