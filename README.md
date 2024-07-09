@@ -28,20 +28,20 @@ understanding to tackle more complex work.
 
 A full source code used in this article can be downloaded (cloned) from my public Github here:
 
-`git@github.com:primecoder/VisionML-Simplify.git`
+- [Project Source Code - Github](https://github.com/primecoder/VisionML-Simplified)
 
 
 ## Part 1 - Create a (ML) Model
 
-Xcode 16 (Beta), comes with Create ML tool which comes with several preset templates, 
+Xcode 16 (Beta), comes with Create ML tool and several preset templates, 
 i.e., Image Classification, Multi-label Image Classification, Hand Pose Classification. 
 _Hand Pose Classification! Interesting!_
-This is the first time I tried my hand on this UI tool. 
+This was the first time I tried my hand on this UI tool. 
+
+> Some background, I have been using Core/Create ML before,
+> by coding, not by using the UI tool.
 
 _Let's see how hard can it be?_
-
-> Just some background, I have been using, creating, and training Core/Create ML before, but
-> by coding, not by using this UI tool.
 
 Embarrassing enough, it took me a while to find where to activate this tool.
 
@@ -49,14 +49,14 @@ Embarrassing enough, it took me a while to find where to activate this tool.
 
 ![ML Create](docs/res/mlcreate-01.png)
 
-I have to say, Apple did well on Easy-to-use department. I clicked around and just follow the
-given instructions. Everything seemed to work (with only a few trail-and-error attempts).
+I have to say, Apple did well on easy-to-use department. I clicked around and just followed the
+instructions. Everything seemed to work (with only a few trails and errors).
 
 ![ML Create](docs/res/mlcreate-02.png)
 
 _Right!_ Looking at the pop-up hint. 
 
-It gave an instruction on the training process - It should be as simple as creating folder structure for training, testing, and validation. Then within each folder, create a sub-folder for each label. Then, my guess, for each label, give it a set of images that represent each number. _Easy!_
+It gave an instruction on the training process - okey, this should be as simple as creating a folder structure for training, testing, and validation. Within each folder, create a sub-folder for each label. Then, my guess, for each label, give it a set of images that represents each number. _Easy!_
 
 Let's prepare Training Directories and Data.
 
@@ -75,14 +75,14 @@ $ mkdir 1 2 3 4 5 6 7 8 9 10
 
 Repeate the above command for `testing` and `validation` folders.
 
-Now, I just needed some images to train my Hand Pose classifier.
+Now, I just needed some images to train my Hand Pose classifier. I took several pictures of my hand gestures and put them under each folder. By the way, I used American Sign Language for counting with one hand. For more information, please see References section below.
 
 ![ML Create](docs/res/wikipedia-finger-counting.png)
 
 ![ML Create](docs/res/training-folders.png)
 
 
-Again, the goal at this stage is to simplify the training process as much as possible. We will keep it to minimum, i.e. 2 images for each label. I opted to not provide images for testing for now and let the tool auto generate test images by subsetting them from the training images. We can always come back here and retrain our ML model, see Part 4 below.
+Again, the goal for this post is to demonstrate **simplicity**, so we will keep the training process as simple as possible. We will keep it to minimum, i.e. 2-4 images for each label. I opted to not provide images for testing for now and let the tool auto generate test images by subsetting them from the training images. We can always come back here and retrain our ML model, see Part 4 below.
 Once, Create ML tool has enough images, the train button should be enabled. 
 
 Start training ML
@@ -98,6 +98,8 @@ You can even view a live preview!
 
 ![ML Create](docs/res/mlcreate-preview.gif)
 
+The final step for this section is to produce a ML model that we can use in our code in the next section.
+
 Select on the Output tab, and click 'Get' to export as `.mlmodel` file. Give it any name. Note that this name will be used as a class name for our ML classifier during our coding phase.
 
 ![ML Create](docs/res/mlcreate-05.png)
@@ -107,7 +109,9 @@ Select on the Output tab, and click 'Get' to export as `.mlmodel` file. Give it 
 
 ## Part 2 - Capture Images from Camera
 
-Now, we have a Machine Learning model that classifies hand-pose images. We need to get some images from somewhere to let our model to work with. We will use `AVFoundation` to capture images from device's camera and use them in our app. 
+Now, we have a Machine Learning model that classifies hand-pose images. Next, we need to get some images, from somewhere, to work with our ML model. 
+
+We will use `AVFoundation` to capture images from device's camera and use them in our app. 
 
 ### Setup a camera
 
@@ -128,6 +132,8 @@ class CameraViewModel: NSObject, ObservableObject {
     }
 }
 ```
+
+And the `setupCamera()` function.
 
 ```swift
     private func setupCamera() {
@@ -159,10 +165,10 @@ class CameraViewModel: NSObject, ObservableObject {
     }
 ```
 
-(1) `getCaptureDevice()`, I want app to support running on both macOS and on iOS/iPadOS. Setting up
+(1) `getCaptureDevice()`, I want our app to run on both macOS and on iOS/iPadOS. Setting up
 a camera on these devices requires platform-specific code. For example, on iPhone, I'd like to use
-front-facing camera. To keep this part of the code clean and not to pollute it with
-platform specific codes, I refactored it out into a separate file.
+front-facing camera. I also want to keep our code simple and clean - not to pollute it with platform specific codes, 
+To do this, I refactored the code that handles platform-specific out into a separate file.
 
 ```swift
 extension CameraViewModel {
@@ -199,9 +205,10 @@ extension CameraViewModel {
 }
 ```
 
-(2) Next, we want to process the captured images, some how.
-`videoOutput.setSampleBufferDelegate(self, queue: videoQueue)`. The frameworkd will call `captureOutput(_:didOutput:from)`. So let's conform to this protocol and then figure out what to do with the captured 
-images later.
+(2) Next, I wanted to process the captured images. _Some how_.
+Looking at `videoOutput.setSampleBufferDelegate(self, queue: videoQueue)`, the frameworkd will call delegate's function `captureOutput(_:didOutput:from)` passing `CMSampleBuffer` as an input. This is where we will process this data into the image that we can work with.
+
+Let's conform to this protocol and then figure out what to do with the captured images.
 
 ```swift
 extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -220,15 +227,15 @@ extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
 }
 ```
 
-(3) On iPhone, I need to handle when I rotate my phone. Again, I wrapped this device-specific code
-inside a function to keep the main logic clean. As you can see, `handleDeviceOrientation(connection:)`
-doesn't do anything for `macOS` as I don't expect to rotate my mac around 😉.
+(3) On iPhone, I needed to handle when the phone is rotated. Again this is platform specific handling, 
+I wrapped this device-specific code inside a function to keep the main logic clean. As you can see, 
+`handleDeviceOrientation(connection:)` doesn't do anything for `macOS` as I don't expect to rotate my mac around 😉.
 
 
 ### Display the captured images
 
-At this point, the app looks very dull. I don't know if it works. Or not?
-Let's add some code to show the images from the camera.
+At this point, the app looks very dumb and dull. _Does it even do anything?_
+Let's add some code to show that our app actually captures images from the camera.
 
 ```swift
 extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -263,8 +270,10 @@ class CameraViewModel: NSObject, ObservableObject {
 }
 ```
 
-At (4b), we add a call to a function which will create an image for each frame that is captured, we 
-will use this to display in our SwiftUI view.
+At (4b), I added a call to a function that creates an image for each frame captured from the camera.
+
+At (4a), we will store it as a class property. We will also publish it so that it can be used (by caller) to display in our 
+SwiftUI view.
 
 ```swift
 ...
@@ -323,6 +332,11 @@ struct HandPoseImageView: View {
 
 ```
 
+At this point, I can now see my handsome face doing some silly gestures to the camera.
+
+_Excellent!_
+
+
 ## Part 3 - Using ML Model for Hand Pose Classification
 
 ### Loading Hand Post Classification Model
@@ -355,6 +369,28 @@ class CameraViewModel: NSObject, ObservableObject {
         }
     }
     ...
+}
+```
+
+`HandPoseMLModel` is really a simple class that wraps around `MLModel`.
+
+```swift
+final class HandPoseMLModel: NSObject, Identifiable {
+    let mlModel: MLModel
+
+    private var classLabels: [Any] {
+        mlModel.modelDescription.classLabels ?? []
+    }
+
+    init(mlModel: MLModel) {
+        self.mlModel = mlModel
+    }
+
+    func predict(poses: HandPoseInput) throws -> HandPoseOutput? {
+        let features = try mlModel.prediction(from: poses)
+        let output = HandPoseOutput(features: features)
+        return output
+    }
 }
 ```
 
@@ -445,13 +481,18 @@ class CameraViewModel: NSObject, ObservableObject {
 }
 ```
 
-Now that we've converted a captured image into multi-array, we can feed it as an input to our
-ML model. Our ML model gives best prediction for a given image. From here on, the usage is limited
-only by our imagination!
+(8) now that we've converted a captured image into multi-array, we can feed it as an input to our
+ML model. Our ML model gives best prediction for a given image. Running our app at this stage, 
+you should see our ML model predicts each gesture and displays the outputs (as string) in the Xcode's debug
+console. 
+
+_Now, What are we going to do with this power?_
+
+From here on, the usage is limited only by our imagination!
 
 ## Part 4 - (Re)Training you ML Model
 
-If you see the demo video at the beginning of this post, you'll notice that the ML model struggles
+From the demo video at the beginning of this post, you may notice that the ML model struggles
 to recognise hand-pose for number 3. This is true as the training steps was simplified.
 The objective was to provide a *minimum* skeletal framework of Xcode project to get
 Apple Vision and Hand Pose ML to work at its simplesticity (I made up a new word here).
@@ -459,14 +500,29 @@ Apple Vision and Hand Pose ML to work at its simplesticity (I made up a new word
 Now that we have a skeletal working project. Training and retraining can be done simply by
 repeating Part 1 - Create ML Model, this can be repeated until the model produces satisfactory accuracy. 
 For example, you might like to give more variety of images for each number. Perhaps, give 
-different set of images for different background, and etc.
+different set of images for different background, and etc. Then, regenerate the output ML model file.
 The new `.mlmodel` file can be dropped into the Xcode (replacing the old one), then rebuild the new 
 version of the app.
 
+## Part 5 - Let's do something fun!
+
+I am working our some fun project that utilises our ML model and the Vision framework. If you are interested,
+please check back here again to see what I come up with.
+
+Thank you for reading my post.
+
+Peace, 
+
+Ace
+
+
 ## References
 
-1. [Apple Developer - Recognizing Gestures with Machine Learning](https://developer.apple.com/tutorials/sample-apps/getstartedwithmachinelearning-recognizegestures)
+1. [Github: VisionML-Simplified (This Project)](https://github.com/primecoder/VisionML-Simplified)
 
-2. 
+2. [Apple Developer - Recognizing Gestures with Machine Learning](https://developer.apple.com/tutorials/sample-apps/getstartedwithmachinelearning-recognizegestures)
 
+3. [Wikipedia - American Sign Language](https://en.wikipedia.org/wiki/American_Sign_Language)
+
+4. [ASL Numbers Discussion](https://www.lifeprint.com/asl101/pages-layout/numbersdiscussion.htm)
 
