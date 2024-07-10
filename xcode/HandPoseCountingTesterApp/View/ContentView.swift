@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var cameraViewModel = CameraViewModel()
+    @StateObject private var gameViewModel = TicTacToeGameViewModel()
 
     var body: some View {
         ZStack {
@@ -22,6 +23,11 @@ struct ContentView: View {
                             recognisedNumber: cameraViewModel.recognisedNumber
                         )
                     }
+                    .overlay {
+                        Text("\(gameViewModel.game.boardString())")
+                            .font(.system(size: 90))
+                            .bold()
+                    }
             } else {
                 Text("No Camera Feed")
                     .foregroundColor(.white)
@@ -31,6 +37,21 @@ struct ContentView: View {
         }
         .background(Color.black)
         .edgesIgnoringSafeArea(.all)
+        .onChange(of: cameraViewModel.recognisedNumber) { oldValue, newValue in
+            if let cellNumber = Int(newValue) {
+                switch cellNumber {
+                case 10:
+                    gameViewModel.game.resetBoard()
+                default:
+                    gameViewModel.game.playMove(cell: cellNumber, player: .human)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                        if let bestMove = gameViewModel.game.findBestMove() {
+                            gameViewModel.game.playMove(cell: bestMove, player: .ai)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
