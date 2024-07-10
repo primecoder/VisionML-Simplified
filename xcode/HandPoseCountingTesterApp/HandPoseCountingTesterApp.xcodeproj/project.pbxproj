@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5C5F795F2C361F8B00B7BE21 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F795E2C361F8B00B7BE21 /* CircularProgressView.swift */; };
 		5C5F79602C361F8B00B7BE21 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F795E2C361F8B00B7BE21 /* CircularProgressView.swift */; };
+		5C8230542C3E591A00A4EE4B /* TicTacToeMinimax in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8230532C3E591A00A4EE4B /* TicTacToeMinimax */; };
 		5CB6A5972C33665F007BDA97 /* HandPoseCountingMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5962C33665F007BDA97 /* HandPoseCountingMacApp.swift */; };
 		5CB6A5992C33665F007BDA97 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5982C33665F007BDA97 /* ContentView.swift */; };
 		5CB6A59B2C336661007BDA97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CB6A59A2C336661007BDA97 /* Assets.xcassets */; };
@@ -51,11 +52,26 @@
 		5CB6A5C52C33CDEF007BDA97 /* CameraViewModel+Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraViewModel+Devices.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5C83CCAA2C3E566A00F95AB0 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				TicTacToeGameViewModel.swift,
+			);
+			target = 5CB6A5932C33665F007BDA97 /* HandPoseCountingMac */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5C83CCA72C3E563900F95AB0 /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5C83CCAA2C3E566A00F95AB0 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		5CB6A5912C33665F007BDA97 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8230542C3E591A00A4EE4B /* TicTacToeMinimax in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,14 +85,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C83CCAB2C3E572500F95AB0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5CB6A55E2C32614F007BDA97 = {
 			isa = PBXGroup;
 			children = (
+				5C83CCA72C3E563900F95AB0 /* ViewModel */,
 				5CB6A5C42C33C8D7007BDA97 /* View */,
 				5CB6A5A92C337D7F007BDA97 /* ML */,
 				5CB6A5952C33665F007BDA97 /* HandPoseCountingMac */,
 				5CB6A5AF2C33B251007BDA97 /* HandPoseCountingPhone */,
 				5CB6A5682C32614F007BDA97 /* Products */,
+				5C83CCAB2C3E572500F95AB0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +237,9 @@
 				Base,
 			);
 			mainGroup = 5CB6A55E2C32614F007BDA97;
+			packageReferences = (
+				5C83CCA62C3E55BB00F95AB0 /* XCRemoteSwiftPackageReference "tic-tac-toe-minimax" */,
+			);
 			productRefGroup = 5CB6A5682C32614F007BDA97 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -559,6 +587,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C83CCA62C3E55BB00F95AB0 /* XCRemoteSwiftPackageReference "tic-tac-toe-minimax" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/primecoder/tic-tac-toe-minimax";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C8230532C3E591A00A4EE4B /* TicTacToeMinimax */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C83CCA62C3E55BB00F95AB0 /* XCRemoteSwiftPackageReference "tic-tac-toe-minimax" */;
+			productName = TicTacToeMinimax;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5CB6A55F2C32614F007BDA97 /* Project object */;
 }
