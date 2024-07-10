@@ -24,9 +24,15 @@ struct ContentView: View {
                         )
                     }
                     .overlay {
-                        Text("\(gameViewModel.game.boardString())")
-                            .font(.system(size: 90))
-                            .bold()
+                        VStack {
+                            Text("\(gameViewModel.game.status)")
+                                .font(.system(size: 30))
+                                .padding(.top, 30)
+                            Text("\(gameViewModel.game.boardString())")
+                                .font(.system(size: 90))
+                                .bold()
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
             } else {
                 Text("No Camera Feed")
