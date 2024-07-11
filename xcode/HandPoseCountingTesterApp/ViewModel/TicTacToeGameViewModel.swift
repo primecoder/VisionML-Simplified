@@ -11,9 +11,17 @@ import TicTacToeMinimax
 class TicTacToeGameViewModel: ObservableObject {
 
     var game = TicTacToeGame()
-    
+
     @Published @MainActor var message: String = "Your move"
-    @MainActor var boardString: String { game.boardString() }
+    // Empty ⬛️
+    // X = ❎
+    // O = 0️⃣
+    @MainActor var boardString: String {
+        let str = game.boardString()
+        return str.replacingOccurrences(of: "-", with: "⬛️")
+            .replacingOccurrences(of: "O", with: "0️⃣")
+            .replacingOccurrences(of: "X", with: "❎")
+    }
 
     @MainActor
     func resetGame() {
