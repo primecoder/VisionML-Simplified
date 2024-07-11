@@ -15,6 +15,7 @@ struct ContentView: View {
         ZStack {
             if let frameImage = cameraViewModel.frameImage {
                 HandPoseImageView(handPoseImage: frameImage)
+                    .opacity(0.2)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .overlay(alignment: .bottomTrailing) {
                         CircularProgressView(
@@ -23,16 +24,16 @@ struct ContentView: View {
                             recognisedNumber: cameraViewModel.recognisedNumber
                         )
                     }
-                    .overlay {
+                    .overlay(alignment: .topLeading) {
                         VStack {
-                            Text("\(gameViewModel.game.status)")
+                            Text("\(gameViewModel.message)")
                                 .font(.system(size: 30))
                                 .padding(.top, 30)
-                            Text("\(gameViewModel.game.boardString())")
+                            Text("\(gameViewModel.boardString)")
                                 .font(.system(size: 90))
                                 .bold()
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding()
                     }
             } else {
                 Text("No Camera Feed")
@@ -47,14 +48,9 @@ struct ContentView: View {
             if let cellNumber = Int(newValue) {
                 switch cellNumber {
                 case 10:
-                    gameViewModel.game.resetBoard()
+                    gameViewModel.resetGame()
                 default:
-                    gameViewModel.game.playMove(cell: cellNumber, player: .human)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                        if let bestMove = gameViewModel.game.findBestMove() {
-                            gameViewModel.game.playMove(cell: bestMove, player: .ai)
-                        }
-                    }
+                    gameViewModel.humanMove(cell: cellNumber)
                 }
             }
         }
