@@ -10,12 +10,15 @@ import TicTacToeMinimax
 
 class TicTacToeGameViewModel: ObservableObject {
 
-    var game = TicTacToeGame()
+    /// TicTacToe engine using MiniMax implementation.
+    private var game = TicTacToeGame()
 
+    /// Game play message.
     @Published @MainActor var message: String = "Your move"
-    // Empty ⬛️
-    // X = ❎
-    // O = 0️⃣
+
+    /// Convert tic-tac-toe board into a better good looking representable strings.
+    ///
+    /// Empty ⬛️, X = ❎, O = 0️⃣
     @MainActor var boardString: String {
         let str = game.boardString()
         return str.replacingOccurrences(of: "-", with: "⬛️")
