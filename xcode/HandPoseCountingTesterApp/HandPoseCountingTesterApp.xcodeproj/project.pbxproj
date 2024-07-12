@@ -26,8 +26,6 @@
 		5CB6A5BF2C33B29E007BDA97 /* HandPoseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A57C2C326194007BDA97 /* HandPoseUtils.swift */; };
 		5CB6A5C22C33C69A007BDA97 /* HandPoseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C12C33C69A007BDA97 /* HandPoseImageView.swift */; };
 		5CB6A5C32C33C69A007BDA97 /* HandPoseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C12C33C69A007BDA97 /* HandPoseImageView.swift */; };
-		5CB6A5C72C33CDF9007BDA97 /* CameraViewModel+Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C52C33CDEF007BDA97 /* CameraViewModel+Devices.swift */; };
-		5CB6A5C82C33CDF9007BDA97 /* CameraViewModel+Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C52C33CDEF007BDA97 /* CameraViewModel+Devices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +44,6 @@
 		5CB6A5B42C33B253007BDA97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CB6A5B72C33B253007BDA97 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CB6A5C12C33C69A007BDA97 /* HandPoseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandPoseImageView.swift; sourceTree = "<group>"; };
-		5CB6A5C52C33CDEF007BDA97 /* CameraViewModel+Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraViewModel+Devices.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -54,6 +51,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				CameraViewModel.swift,
+				"CameraViewModel+Devices.swift",
 			);
 			target = 5CB6A5AD2C33B251007BDA97 /* HandPoseCountingPhone */;
 		};
@@ -61,6 +59,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				CameraViewModel.swift,
+				"CameraViewModel+Devices.swift",
 				TicTacToeGameViewModel.swift,
 			);
 			target = 5CB6A5932C33665F007BDA97 /* HandPoseCountingMac */;
@@ -144,7 +143,6 @@
 				5CB6A58E2C3261CF007BDA97 /* HandPoseCountingClassifier.mlmodel */,
 				5CB6A57B2C326194007BDA97 /* HandPoseMLModel.swift */,
 				5CB6A57C2C326194007BDA97 /* HandPoseUtils.swift */,
-				5CB6A5C52C33CDEF007BDA97 /* CameraViewModel+Devices.swift */,
 			);
 			path = ML;
 			sourceTree = "<group>";
@@ -284,7 +282,6 @@
 				5C5F79602C361F8B00B7BE21 /* CircularProgressView.swift in Sources */,
 				5CB6A5A52C3370C4007BDA97 /* HandPoseCountingClassifier.mlmodel in Sources */,
 				5CB6A5992C33665F007BDA97 /* ContentView.swift in Sources */,
-				5CB6A5C72C33CDF9007BDA97 /* CameraViewModel+Devices.swift in Sources */,
 				5CB6A5972C33665F007BDA97 /* HandPoseCountingMacApp.swift in Sources */,
 				5CB6A5A72C3371A0007BDA97 /* HandPoseUtils.swift in Sources */,
 				5CB6A5A82C3371AF007BDA97 /* HandPoseMLModel.swift in Sources */,
@@ -299,7 +296,6 @@
 				5C5F795F2C361F8B00B7BE21 /* CircularProgressView.swift in Sources */,
 				5CB6A5BE2C33B298007BDA97 /* HandPoseMLModel.swift in Sources */,
 				5CB6A5BC2C33B27B007BDA97 /* ContentView.swift in Sources */,
-				5CB6A5C82C33CDF9007BDA97 /* CameraViewModel+Devices.swift in Sources */,
 				5CB6A5BD2C33B28F007BDA97 /* HandPoseCountingClassifier.mlmodel in Sources */,
 				5CB6A5BF2C33B29E007BDA97 /* HandPoseUtils.swift in Sources */,
 				5CB6A5B12C33B251007BDA97 /* HandPoseCountingPhoneApp.swift in Sources */,
