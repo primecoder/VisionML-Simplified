@@ -1,6 +1,4 @@
-/*
-See the License.txt file for this sample’s licensing information.
-*/
+// credit: https://developer.apple.com/tutorials/sample-apps/getstartedwithmachinelearning-recognizegestures
 
 import Foundation
 import CoreML

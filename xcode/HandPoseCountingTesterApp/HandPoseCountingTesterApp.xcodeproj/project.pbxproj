@@ -14,7 +14,6 @@
 		5CB6A5992C33665F007BDA97 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5982C33665F007BDA97 /* ContentView.swift */; };
 		5CB6A59B2C336661007BDA97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CB6A59A2C336661007BDA97 /* Assets.xcassets */; };
 		5CB6A59E2C336661007BDA97 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CB6A59D2C336661007BDA97 /* Preview Assets.xcassets */; };
-		5CB6A5A42C33675B007BDA97 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5A32C33675B007BDA97 /* CameraViewModel.swift */; };
 		5CB6A5A52C3370C4007BDA97 /* HandPoseCountingClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A58E2C3261CF007BDA97 /* HandPoseCountingClassifier.mlmodel */; };
 		5CB6A5A72C3371A0007BDA97 /* HandPoseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A57C2C326194007BDA97 /* HandPoseUtils.swift */; };
 		5CB6A5A82C3371AF007BDA97 /* HandPoseMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A57B2C326194007BDA97 /* HandPoseMLModel.swift */; };
@@ -25,7 +24,6 @@
 		5CB6A5BD2C33B28F007BDA97 /* HandPoseCountingClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A58E2C3261CF007BDA97 /* HandPoseCountingClassifier.mlmodel */; };
 		5CB6A5BE2C33B298007BDA97 /* HandPoseMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A57B2C326194007BDA97 /* HandPoseMLModel.swift */; };
 		5CB6A5BF2C33B29E007BDA97 /* HandPoseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A57C2C326194007BDA97 /* HandPoseUtils.swift */; };
-		5CB6A5C02C33B2BC007BDA97 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5A32C33675B007BDA97 /* CameraViewModel.swift */; };
 		5CB6A5C22C33C69A007BDA97 /* HandPoseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C12C33C69A007BDA97 /* HandPoseImageView.swift */; };
 		5CB6A5C32C33C69A007BDA97 /* HandPoseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C12C33C69A007BDA97 /* HandPoseImageView.swift */; };
 		5CB6A5C72C33CDF9007BDA97 /* CameraViewModel+Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C52C33CDEF007BDA97 /* CameraViewModel+Devices.swift */; };
@@ -43,7 +41,6 @@
 		5CB6A59A2C336661007BDA97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CB6A59D2C336661007BDA97 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CB6A59F2C336661007BDA97 /* HandPoseCountingMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HandPoseCountingMac.entitlements; sourceTree = "<group>"; };
-		5CB6A5A32C33675B007BDA97 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		5CB6A5AE2C33B251007BDA97 /* HandPoseCountingPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandPoseCountingPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB6A5B02C33B251007BDA97 /* HandPoseCountingPhoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandPoseCountingPhoneApp.swift; sourceTree = "<group>"; };
 		5CB6A5B42C33B253007BDA97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,9 +50,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5C8230552C40AED600A4EE4B /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CameraViewModel.swift,
+			);
+			target = 5CB6A5AD2C33B251007BDA97 /* HandPoseCountingPhone */;
+		};
 		5C83CCAA2C3E566A00F95AB0 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				CameraViewModel.swift,
 				TicTacToeGameViewModel.swift,
 			);
 			target = 5CB6A5932C33665F007BDA97 /* HandPoseCountingMac */;
@@ -63,7 +68,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		5C83CCA72C3E563900F95AB0 /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5C83CCAA2C3E566A00F95AB0 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
+		5C83CCA72C3E563900F95AB0 /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5C83CCAA2C3E566A00F95AB0 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 5C8230552C40AED600A4EE4B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +144,6 @@
 				5CB6A58E2C3261CF007BDA97 /* HandPoseCountingClassifier.mlmodel */,
 				5CB6A57B2C326194007BDA97 /* HandPoseMLModel.swift */,
 				5CB6A57C2C326194007BDA97 /* HandPoseUtils.swift */,
-				5CB6A5A32C33675B007BDA97 /* CameraViewModel.swift */,
 				5CB6A5C52C33CDEF007BDA97 /* CameraViewModel+Devices.swift */,
 			);
 			path = ML;
@@ -284,7 +288,6 @@
 				5CB6A5972C33665F007BDA97 /* HandPoseCountingMacApp.swift in Sources */,
 				5CB6A5A72C3371A0007BDA97 /* HandPoseUtils.swift in Sources */,
 				5CB6A5A82C3371AF007BDA97 /* HandPoseMLModel.swift in Sources */,
-				5CB6A5A42C33675B007BDA97 /* CameraViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +303,6 @@
 				5CB6A5BD2C33B28F007BDA97 /* HandPoseCountingClassifier.mlmodel in Sources */,
 				5CB6A5BF2C33B29E007BDA97 /* HandPoseUtils.swift in Sources */,
 				5CB6A5B12C33B251007BDA97 /* HandPoseCountingPhoneApp.swift in Sources */,
-				5CB6A5C02C33B2BC007BDA97 /* CameraViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
