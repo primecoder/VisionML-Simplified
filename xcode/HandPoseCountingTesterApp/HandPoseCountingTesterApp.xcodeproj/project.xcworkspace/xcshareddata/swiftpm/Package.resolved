@@ -1,0 +1,15 @@
+{
+  "originHash" : "f30958ce898268987ed272a87ddbe82c2d0196fed79649febf8ab17e026eb536",
+  "pins" : [
+    {
+      "identity" : "tic-tac-toe-minimax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/primecoder/tic-tac-toe-minimax",
+      "state" : {
+        "branch" : "main",
+        "revision" : "e9596af59299709213afaea1aba180c96500a506"
+      }
+    }
+  ],
+  "version" : 3
+}

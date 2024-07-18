@@ -10,15 +10,33 @@ import SwiftUI
 import Combine
 import Vision
 
+/// Provide access to device's camera, provide captured images for display, and
+/// convert each image into ML MultiArray of hand poses. This viewmodel also utilises
+/// ML model for converting hand poses to numbers from 1 - 10.
+///
+/// This implementation captures images as fast as they comes in, each frame is called One Reading.
+/// Each reading then converted to SwiftUI image and perform hand-pose classification.
+/// The same reading is required for upto N times (see `frameCountMax`) before a number
+/// is registered as "recognised" and stored in `recognisedNumber'.
+/// `
 class CameraViewModel: NSObject, ObservableObject {
+    /// Represents an image captured from device camera.
     @Published @MainActor var frameImage: HandPoseImage?
+
+    /// ML classified number after the same number appears N times (see `frameCountMax`).
     @Published @MainActor var recognisedNumber: String = ""
+
+    /// ML classified number for each frame (reading).
     @Published @MainActor var readingNumber: String = ""
+
+    /// Percentage of the frames that the same number appears in proportion to `frameCountMax`.
     @Published @MainActor var readingPct: Double = 0.0
 
     private let session = AVCaptureSession()
     private let videoOutput = AVCaptureVideoDataOutput()
 
+    /// Current number of frames with the same reading number.
+    /// Each update, `readingPct` is recalculated.
     private var frameCount: Int = 0 {
         didSet {
             Task { @MainActor in
@@ -28,14 +46,19 @@ class CameraViewModel: NSObject, ObservableObject {
         }
     }
 
+    /// Indicates if ML classification should be performed for the current reading.
     private var canPredict: Bool = false
+
+    /// Remember the previous message (reading number).
     private var prevMessage: String = ""
 
-    /// Max number of frames with same number before registering as output number.
+    /// Max number of frames with same number before registering as recognised number for output to client.
     private static var frameCountMax: Int = 30
 
+    /// ML model for classifying hand poses to output labels.
     private var mlModel: HandPoseMLModel!
 
+    /// Vision's hand-pose request to submit to Vision engine.
     lazy private var handPoseRequest: VNDetectHumanHandPoseRequest = {
         let request = VNDetectHumanHandPoseRequest()
         request.maximumHandCount = 1
@@ -56,6 +79,11 @@ class CameraViewModel: NSObject, ObservableObject {
         }
     }
 
+    /// Setup device's camera and start capturing images.
+    ///
+    /// It is required that this class conforms to `AVCaptureVideoDataOutputSampleBufferDelegate`.
+    /// AVFoundation calls this delegate to process each frame captured from a device.
+    ///
     private func setupCamera() {
         session.beginConfiguration()
 
@@ -84,7 +112,43 @@ class CameraViewModel: NSObject, ObservableObject {
         session.startRunning()
     }
     
-    private func predictHandPose(_ pixelBuffer: CVImageBuffer) {
+    @MainActor
+    private func resetPrediction() {
+        readingNumber = ""
+        prevMessage = ""
+        frameCount = 0
+        recognisedNumber = ""
+        canPredict = true
+    }
+}
+
+/// Conform to AVCaptureVideoDataOutputSampleBufferDelegate to process each captured images.
+///
+extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
+    func captureOutput(
+        _ output: AVCaptureOutput,
+        didOutput sampleBuffer: CMSampleBuffer,
+        from connection: AVCaptureConnection
+    ) {
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        handleDeviceOrientation(connection: connection)
+        predictHandPose(pixelBuffer)
+        updateFrameImage(pixelBuffer)
+    }
+}
+
+extension CameraViewModel {
+    /// Classifies a captured image.
+    ///
+    /// This function is running in 2 isolation thread: 1) "videoQueue" that does capturing images;
+    /// and 2) @MainActor that is used for displaying UI.
+    ///
+    /// For each image, a request is sent to Vision engine to see if any hand-pose is detected.
+    /// If it does, MLMultiArray is created and passed onto ML engine to perform classification.
+    /// If the same classified number appears N times, this number is registered as "Recognised".
+    /// Otherwise, the frame count is reset.
+    ///
+    fileprivate func predictHandPose(_ pixelBuffer: CVImageBuffer) {
         // Check if ML is not busy.
         guard canPredict else { return }
 
@@ -122,29 +186,5 @@ class CameraViewModel: NSObject, ObservableObject {
             }
         }
     }
-
-    @MainActor
-    private func resetPrediction() {
-        readingNumber = ""
-        prevMessage = ""
-        frameCount = 0
-        recognisedNumber = ""
-        canPredict = true
-    }
-}
-
-extension CameraViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
-
-    func captureOutput(
-        _ output: AVCaptureOutput,
-        didOutput sampleBuffer: CMSampleBuffer,
-        from connection: AVCaptureConnection
-    ) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        handleDeviceOrientation(connection: connection)
-        predictHandPose(pixelBuffer)
-        updateFrameImage(pixelBuffer)
-    }
-
 }
 

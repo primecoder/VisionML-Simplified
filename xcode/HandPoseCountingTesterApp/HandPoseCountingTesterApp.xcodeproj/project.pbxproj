@@ -3,17 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5C5F795F2C361F8B00B7BE21 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F795E2C361F8B00B7BE21 /* CircularProgressView.swift */; };
 		5C5F79602C361F8B00B7BE21 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F795E2C361F8B00B7BE21 /* CircularProgressView.swift */; };
+		5C8230542C3E591A00A4EE4B /* TicTacToeMinimax in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8230532C3E591A00A4EE4B /* TicTacToeMinimax */; };
 		5CB6A5972C33665F007BDA97 /* HandPoseCountingMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5962C33665F007BDA97 /* HandPoseCountingMacApp.swift */; };
 		5CB6A5992C33665F007BDA97 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5982C33665F007BDA97 /* ContentView.swift */; };
 		5CB6A59B2C336661007BDA97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CB6A59A2C336661007BDA97 /* Assets.xcassets */; };
 		5CB6A59E2C336661007BDA97 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CB6A59D2C336661007BDA97 /* Preview Assets.xcassets */; };
-		5CB6A5A42C33675B007BDA97 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5A32C33675B007BDA97 /* CameraViewModel.swift */; };
 		5CB6A5A52C3370C4007BDA97 /* HandPoseCountingClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A58E2C3261CF007BDA97 /* HandPoseCountingClassifier.mlmodel */; };
 		5CB6A5A72C3371A0007BDA97 /* HandPoseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A57C2C326194007BDA97 /* HandPoseUtils.swift */; };
 		5CB6A5A82C3371AF007BDA97 /* HandPoseMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A57B2C326194007BDA97 /* HandPoseMLModel.swift */; };
@@ -24,11 +24,14 @@
 		5CB6A5BD2C33B28F007BDA97 /* HandPoseCountingClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A58E2C3261CF007BDA97 /* HandPoseCountingClassifier.mlmodel */; };
 		5CB6A5BE2C33B298007BDA97 /* HandPoseMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A57B2C326194007BDA97 /* HandPoseMLModel.swift */; };
 		5CB6A5BF2C33B29E007BDA97 /* HandPoseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A57C2C326194007BDA97 /* HandPoseUtils.swift */; };
-		5CB6A5C02C33B2BC007BDA97 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5A32C33675B007BDA97 /* CameraViewModel.swift */; };
 		5CB6A5C22C33C69A007BDA97 /* HandPoseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C12C33C69A007BDA97 /* HandPoseImageView.swift */; };
 		5CB6A5C32C33C69A007BDA97 /* HandPoseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C12C33C69A007BDA97 /* HandPoseImageView.swift */; };
-		5CB6A5C72C33CDF9007BDA97 /* CameraViewModel+Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C52C33CDEF007BDA97 /* CameraViewModel+Devices.swift */; };
-		5CB6A5C82C33CDF9007BDA97 /* CameraViewModel+Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C52C33CDEF007BDA97 /* CameraViewModel+Devices.swift */; };
+		5CF7D1442C48A7D900AE056C /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F795E2C361F8B00B7BE21 /* CircularProgressView.swift */; };
+		5CF7D1452C48A7F400AE056C /* HandPoseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A57C2C326194007BDA97 /* HandPoseUtils.swift */; };
+		5CF7D1462C48A7F400AE056C /* HandPoseMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A57B2C326194007BDA97 /* HandPoseMLModel.swift */; };
+		5CF7D1472C48A80E00AE056C /* HandPoseCountingClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A58E2C3261CF007BDA97 /* HandPoseCountingClassifier.mlmodel */; };
+		5CF7D1482C48A82A00AE056C /* HandPoseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6A5C12C33C69A007BDA97 /* HandPoseImageView.swift */; };
+		5CF7D14A2C48A90100AE056C /* TicTacToeMinimax in Frameworks */ = {isa = PBXBuildFile; productRef = 5CF7D1492C48A90100AE056C /* TicTacToeMinimax */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,20 +45,53 @@
 		5CB6A59A2C336661007BDA97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CB6A59D2C336661007BDA97 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CB6A59F2C336661007BDA97 /* HandPoseCountingMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HandPoseCountingMac.entitlements; sourceTree = "<group>"; };
-		5CB6A5A32C33675B007BDA97 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		5CB6A5AE2C33B251007BDA97 /* HandPoseCountingPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandPoseCountingPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB6A5B02C33B251007BDA97 /* HandPoseCountingPhoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandPoseCountingPhoneApp.swift; sourceTree = "<group>"; };
 		5CB6A5B42C33B253007BDA97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CB6A5B72C33B253007BDA97 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CB6A5C12C33C69A007BDA97 /* HandPoseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandPoseImageView.swift; sourceTree = "<group>"; };
-		5CB6A5C52C33CDEF007BDA97 /* CameraViewModel+Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraViewModel+Devices.swift"; sourceTree = "<group>"; };
+		5CF7D1312C48A6CE00AE056C /* HandPoseTicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandPoseTicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5C8230552C40AED600A4EE4B /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CameraViewModel.swift,
+				"CameraViewModel+Devices.swift",
+			);
+			target = 5CB6A5AD2C33B251007BDA97 /* HandPoseCountingPhone */;
+		};
+		5C83CCAA2C3E566A00F95AB0 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CameraViewModel.swift,
+				"CameraViewModel+Devices.swift",
+			);
+			target = 5CB6A5932C33665F007BDA97 /* HandPoseCountingMac */;
+		};
+		5CF7D1412C48A7B500AE056C /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CameraViewModel.swift,
+				"CameraViewModel+Devices.swift",
+				TicTacToeGameViewModel.swift,
+			);
+			target = 5CF7D1302C48A6CE00AE056C /* HandPoseTicTacToe */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5C83CCA72C3E563900F95AB0 /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5C83CCAA2C3E566A00F95AB0 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 5C8230552C40AED600A4EE4B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 5CF7D1412C48A7B500AE056C /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
+		5CF7D1322C48A6CE00AE056C /* HandPoseTicTacToe */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = HandPoseTicTacToe; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5CB6A5912C33665F007BDA97 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8230542C3E591A00A4EE4B /* TicTacToeMinimax in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,17 +102,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5CF7D12E2C48A6CE00AE056C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CF7D14A2C48A90100AE056C /* TicTacToeMinimax in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C83CCAB2C3E572500F95AB0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5CB6A55E2C32614F007BDA97 = {
 			isa = PBXGroup;
 			children = (
+				5C83CCA72C3E563900F95AB0 /* ViewModel */,
 				5CB6A5C42C33C8D7007BDA97 /* View */,
 				5CB6A5A92C337D7F007BDA97 /* ML */,
 				5CB6A5952C33665F007BDA97 /* HandPoseCountingMac */,
 				5CB6A5AF2C33B251007BDA97 /* HandPoseCountingPhone */,
+				5CF7D1322C48A6CE00AE056C /* HandPoseTicTacToe */,
 				5CB6A5682C32614F007BDA97 /* Products */,
+				5C83CCAB2C3E572500F95AB0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +139,7 @@
 			children = (
 				5CB6A5942C33665F007BDA97 /* HandPoseCountingMac.app */,
 				5CB6A5AE2C33B251007BDA97 /* HandPoseCountingPhone.app */,
+				5CF7D1312C48A6CE00AE056C /* HandPoseTicTacToe.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,8 +169,6 @@
 				5CB6A58E2C3261CF007BDA97 /* HandPoseCountingClassifier.mlmodel */,
 				5CB6A57B2C326194007BDA97 /* HandPoseMLModel.swift */,
 				5CB6A57C2C326194007BDA97 /* HandPoseUtils.swift */,
-				5CB6A5A32C33675B007BDA97 /* CameraViewModel.swift */,
-				5CB6A5C52C33CDEF007BDA97 /* CameraViewModel+Devices.swift */,
 			);
 			path = ML;
 			sourceTree = "<group>";
@@ -185,6 +238,29 @@
 			productReference = 5CB6A5AE2C33B251007BDA97 /* HandPoseCountingPhone.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5CF7D1302C48A6CE00AE056C /* HandPoseTicTacToe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CF7D13F2C48A6CF00AE056C /* Build configuration list for PBXNativeTarget "HandPoseTicTacToe" */;
+			buildPhases = (
+				5CF7D12D2C48A6CE00AE056C /* Sources */,
+				5CF7D12E2C48A6CE00AE056C /* Frameworks */,
+				5CF7D12F2C48A6CE00AE056C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5CF7D1322C48A6CE00AE056C /* HandPoseTicTacToe */,
+			);
+			name = HandPoseTicTacToe;
+			packageProductDependencies = (
+				5CF7D1492C48A90100AE056C /* TicTacToeMinimax */,
+			);
+			productName = HandPoseTicTacToe;
+			productReference = 5CF7D1312C48A6CE00AE056C /* HandPoseTicTacToe.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -201,6 +277,9 @@
 					5CB6A5AD2C33B251007BDA97 = {
 						CreatedOnToolsVersion = 16.0;
 					};
+					5CF7D1302C48A6CE00AE056C = {
+						CreatedOnToolsVersion = 16.0;
+					};
 				};
 			};
 			buildConfigurationList = 5CB6A5622C32614F007BDA97 /* Build configuration list for PBXProject "HandPoseCountingTesterApp" */;
@@ -212,12 +291,16 @@
 				Base,
 			);
 			mainGroup = 5CB6A55E2C32614F007BDA97;
+			packageReferences = (
+				5C83CCA62C3E55BB00F95AB0 /* XCRemoteSwiftPackageReference "tic-tac-toe-minimax" */,
+			);
 			productRefGroup = 5CB6A5682C32614F007BDA97 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				5CB6A5932C33665F007BDA97 /* HandPoseCountingMac */,
 				5CB6A5AD2C33B251007BDA97 /* HandPoseCountingPhone */,
+				5CF7D1302C48A6CE00AE056C /* HandPoseTicTacToe */,
 			);
 		};
 /* End PBXProject section */
@@ -241,6 +324,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5CF7D12F2C48A6CE00AE056C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -252,11 +342,9 @@
 				5C5F79602C361F8B00B7BE21 /* CircularProgressView.swift in Sources */,
 				5CB6A5A52C3370C4007BDA97 /* HandPoseCountingClassifier.mlmodel in Sources */,
 				5CB6A5992C33665F007BDA97 /* ContentView.swift in Sources */,
-				5CB6A5C72C33CDF9007BDA97 /* CameraViewModel+Devices.swift in Sources */,
 				5CB6A5972C33665F007BDA97 /* HandPoseCountingMacApp.swift in Sources */,
 				5CB6A5A72C3371A0007BDA97 /* HandPoseUtils.swift in Sources */,
 				5CB6A5A82C3371AF007BDA97 /* HandPoseMLModel.swift in Sources */,
-				5CB6A5A42C33675B007BDA97 /* CameraViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,11 +356,21 @@
 				5C5F795F2C361F8B00B7BE21 /* CircularProgressView.swift in Sources */,
 				5CB6A5BE2C33B298007BDA97 /* HandPoseMLModel.swift in Sources */,
 				5CB6A5BC2C33B27B007BDA97 /* ContentView.swift in Sources */,
-				5CB6A5C82C33CDF9007BDA97 /* CameraViewModel+Devices.swift in Sources */,
 				5CB6A5BD2C33B28F007BDA97 /* HandPoseCountingClassifier.mlmodel in Sources */,
 				5CB6A5BF2C33B29E007BDA97 /* HandPoseUtils.swift in Sources */,
 				5CB6A5B12C33B251007BDA97 /* HandPoseCountingPhoneApp.swift in Sources */,
-				5CB6A5C02C33B2BC007BDA97 /* CameraViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CF7D12D2C48A6CE00AE056C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CF7D1472C48A80E00AE056C /* HandPoseCountingClassifier.mlmodel in Sources */,
+				5CF7D1482C48A82A00AE056C /* HandPoseImageView.swift in Sources */,
+				5CF7D1452C48A7F400AE056C /* HandPoseUtils.swift in Sources */,
+				5CF7D1462C48A7F400AE056C /* HandPoseMLModel.swift in Sources */,
+				5CF7D1442C48A7D900AE056C /* CircularProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +626,66 @@
 			};
 			name = Release;
 		};
+		5CF7D13D2C48A6CF00AE056C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HandPoseTicTacToe/HandPoseTicTacToe.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HandPoseTicTacToe/Preview Content\"";
+				DEVELOPMENT_TEAM = Z6UU7WL5HP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Requires access to camera to detect hand gestures.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.primecoder-authors.research.HandPoseTicTacToe";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5CF7D13E2C48A6CF00AE056C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HandPoseTicTacToe/HandPoseTicTacToe.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HandPoseTicTacToe/Preview Content\"";
+				DEVELOPMENT_TEAM = Z6UU7WL5HP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Requires access to camera to detect hand gestures.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.primecoder-authors.research.HandPoseTicTacToe";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -558,7 +716,40 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5CF7D13F2C48A6CF00AE056C /* Build configuration list for PBXNativeTarget "HandPoseTicTacToe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CF7D13D2C48A6CF00AE056C /* Debug */,
+				5CF7D13E2C48A6CF00AE056C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C83CCA62C3E55BB00F95AB0 /* XCRemoteSwiftPackageReference "tic-tac-toe-minimax" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/primecoder/tic-tac-toe-minimax";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C8230532C3E591A00A4EE4B /* TicTacToeMinimax */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C83CCA62C3E55BB00F95AB0 /* XCRemoteSwiftPackageReference "tic-tac-toe-minimax" */;
+			productName = TicTacToeMinimax;
+		};
+		5CF7D1492C48A90100AE056C /* TicTacToeMinimax */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C83CCA62C3E55BB00F95AB0 /* XCRemoteSwiftPackageReference "tic-tac-toe-minimax" */;
+			productName = TicTacToeMinimax;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5CB6A55F2C32614F007BDA97 /* Project object */;
 }
